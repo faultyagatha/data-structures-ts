@@ -1,0 +1,23 @@
+{
+  "name": "data-structures-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faultyagatha/data-structures-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faultyagatha/data-structures-ts/issues"
+  },
+  "homepage": "https://github.com/faultyagatha/data-structures-ts#readme",
+  "dependencies": {
+    "typescript": "^4.1.3"
+  }
+}
