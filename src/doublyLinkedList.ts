@@ -28,6 +28,7 @@ interface IDoublyLinkedList<T> {
 /** @method setValueByIndex: set the node's value by a given index */
 /** @method insertValueAtIndex: insert a new node with a given value by a given index */
 /** @method removeNodeAtIndex: remove a node by a given index */
+/** @method traverse: convenience method: return the list as an array of its values */
 
 export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
   public length: number;
