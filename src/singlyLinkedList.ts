@@ -1,11 +1,10 @@
+class ListNode<T> {
+  public next: ListNode<T> | null;
 
-// class ListNode<T> {
-//   public next: ListNode<T> | null;
-
-//   constructor(public val: T) {
-//     this.next = null;
-//   }
-// }
+  constructor(public val: T) {
+    this.next = null;
+  }
+}
 
 // interface ISinglyLinkedList<T> {
 //   unshift
@@ -35,4 +34,4 @@
 //       this.
 //     }
 //   }
-}
+// }
