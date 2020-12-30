@@ -8,9 +8,17 @@ import { swap } from './helpers';
  * - time complexity: O(n^2) */
 
 export const insertionSort = (arr: any[]) => {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-
+  //start from the second elem
+  for (let i = 1; i < arr.length; i++) {
+    let current = arr[i];
+    //work backwards 
+    let j = i - 1;
+    while (j > 0 && arr[j] > current) {
+      arr[j + 1] = arr[j];
+      j--;
     }
+    //swap
+    arr[j + 1] = current;
   }
+  return arr;
 }
