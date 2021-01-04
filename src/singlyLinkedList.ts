@@ -18,7 +18,7 @@ interface ISinglyLinkedList<T> {
   traverse(): void;
 }
 
-class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
+export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
   public length: number;
   public head: ListNode<T> | null;
   public tail: ListNode<T> | null;
@@ -132,8 +132,8 @@ class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
     if (index === 0) this.shift();
     if (index === this.length - 1) this.pop();
     const prevNode = this.getByIndex(index - 1);
-    const toBeRemoved = prevNode?.next;
-    prevNode.next = toBeRemoved?.next;
+    const toBeRemoved = prevNode!.next;
+    prevNode!.next = toBeRemoved!.next;
     this.length--;
     return toBeRemoved;
   }
