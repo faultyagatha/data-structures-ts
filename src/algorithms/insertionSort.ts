@@ -13,7 +13,7 @@ export const insertionSort = (arr: any[]) => {
     let current = arr[i];
     //work backwards 
     let j = i - 1;
-    while (j > 0 && arr[j] > current) {
+    while (j >= 0 && arr[j] > current) {
       arr[j + 1] = arr[j];
       j--;
     }
