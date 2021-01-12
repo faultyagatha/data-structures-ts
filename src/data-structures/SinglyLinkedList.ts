@@ -16,12 +16,13 @@ interface ISinglyLinkedList<T> {
   insertValueAtIndex(index: number, val: T): boolean;
   removeNodeAtIndex(index: number): ListNode<T> | null;
   traverse(): void;
+  size(): number;
 }
 
 export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
-  public length: number;
-  public head: ListNode<T> | null;
-  public tail: ListNode<T> | null;
+  private length: number;
+  private head: ListNode<T> | null;
+  private tail: ListNode<T> | null;
 
   constructor() {
     this.length = 0;
@@ -143,5 +144,9 @@ export class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
     while (current?.next) {
       current = current?.next;
     }
+  }
+
+  size(): number {
+    return this.length;
   }
 }

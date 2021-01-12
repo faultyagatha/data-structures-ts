@@ -5,6 +5,7 @@ interface IStack<T> {
   pop(): T | undefined;
   peek(): T | undefined;
   size(): number;
+  clear(): void;
 }
 
 /** @member storage: all stacked items */
@@ -13,13 +14,14 @@ interface IStack<T> {
 /** @method pop: removes an item from the stack */
 /** @method peek: returns the last added item without removing it from the stack */
 /** @method size: returns the length of the stack */
-class Stack<T> implements IStack<T> {
+/** @method clear: removes all elements from the stack */
+export class Stack<T> implements IStack<T> {
   private storage: T[] = [];
   constructor(private capacity: number = Infinity) { }
 
   push(el: T): void {
     if (this.size() === this.capacity) {
-      throw new Error("Stack has reached max capacity")
+      throw new Error("Stack has reached max capacity");
     }
     this.storage.push(el);
   }
@@ -34,5 +36,9 @@ class Stack<T> implements IStack<T> {
 
   size(): number {
     return this.storage.length;
+  }
+
+  clear(): void {
+    this.storage.length = 0;
   }
 }

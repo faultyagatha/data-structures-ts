@@ -18,6 +18,7 @@ interface IDoublyLinkedList<T> {
   insertValueAtIndex(index: number, val: T): boolean;
   removeNodeAtIndex(index: number): ListNode<T> | null;
   traverse(): T[];
+  size(): number;
 }
 
 /** @method unshift: insert in the beginning */
@@ -31,7 +32,7 @@ interface IDoublyLinkedList<T> {
 /** @method traverse: convenience method: return the list as an array of its values */
 
 export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
-  public length: number;
+  private length: number;
   private head: ListNode<T> | null;
   private tail: ListNode<T> | null;
 
@@ -192,5 +193,9 @@ export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
     }
     console.log(array);
     return array;
+  }
+
+  size(): number {
+    return this.length;
   }
 }
