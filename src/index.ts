@@ -2,7 +2,8 @@ import {
   DoublyLinkedList,
   SinglyLinkedList,
   Stack,
-  Queue
+  Queue,
+  BST
 } from './data-structures';
 
 import {
@@ -39,3 +40,11 @@ newSLL.insertValueAtIndex(0, { title: "javascript" });
 // console.log(insertionSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]));
 // console.log(insertionSort([20, 1, 56, 2, 100, 6]));
 console.log(mergeSort([20, 1, 56, 2, 100, 6]));
+
+/** BST */
+let bst = new BST<Number>();
+const arr = [10, 22, 36, 3, 9];
+for (let i = 0; i < arr.length; i++) {
+  bst.insert(arr[i]);
+}
+console.log('BFS: ', bst.bfs());
