@@ -9,8 +9,20 @@ class TreeNode<T> {
 
 interface IBST<T> {
   insert(val: T): BST<T>;
+  find(val: T): TreeNode<T> | undefined;
+  contains(val: T): boolean;
   bfs(): T[] | undefined;
+  dfsInOrder(): T[] | undefined;
+  dfsPreOrder(): T[] | undefined;
 }
+
+/** @method insert: insert the node in the right order */
+/** @method find: find the node with provided value */
+/** @method contains: returns true if the tree has a node with the provided value; false otherwise */
+/** @method bfs: breadth first search traversal */
+/** @method dfsInOrder: depth first search in order traversal */
+/** @method dfsPreOrder: depth first search pre order traversal */
+/** @method dfsPostOrder: depth first search post order traversal */
 
 export class BST<T> implements IBST<T> {
   private root: TreeNode<T> | null;
@@ -45,6 +57,41 @@ export class BST<T> implements IBST<T> {
     }
   }
 
+  find(val: T): TreeNode<T> | undefined {
+    if (this.root === null) return undefined;
+    let current: TreeNode<T> | null = this.root;
+    //helper to stop traversal
+    let found = false;
+    while (!found && current) {
+      if (val === current.val) return current;
+      if (val < current.val) {
+        current = current.left;
+      } else if (val > current.val) {
+        current = current.right;
+      } else {
+        found = true;
+      }
+    }
+    if (!found) return undefined;
+    return current as TreeNode<T>;
+  }
+
+  contains(val: T): boolean {
+    if (this.root === null) return false;
+    let current: TreeNode<T> | null = this.root;
+    while (current) {
+      if (val === current.val) return true;
+      if (val < current.val) {
+        current = current.left;
+      } else if (val > current.val) {
+        current = current.right;
+      } else {
+        return true;
+      }
+    }
+    return false;
+  }
+
   bfs(): T[] | undefined {
     let data = [];
     //bookkeeping queue for current nodes
@@ -54,11 +101,52 @@ export class BST<T> implements IBST<T> {
     queue.push(this.root);
     while (queue.length) {
       node = queue.shift() as TreeNode<T>;
-      data.push(node.val); //val - for demonstration purpose
+      data.push(node.val); //val - for convenience
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
     return data;
   }
 
+  /** sorted data */
+  dfsInOrder(): T[] | undefined {
+    if (!this.root) return undefined;
+    let data: T[] = [];
+    let current = this.root;
+    function traverse(node: TreeNode<T>) {
+      if (node.left) traverse(node.left);
+      data.push(node.val); //val - for convenience
+      if (node.right) traverse(node.right);
+    }
+    traverse(current as TreeNode<T>);
+    return data;
+  }
+
+  /** first add to the list and then visit the node */
+  dfsPreOrder(): T[] | undefined {
+    if (!this.root) return undefined;
+    let data: T[] = [];
+    let current = this.root;
+    function traverse(node: TreeNode<T>) {
+      data.push(node.val); //val - for convenience
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+    traverse(current as TreeNode<T>);
+    return data;
+  }
+
+  /** first visit the node and then add to the list */
+  dfsPostOrder(): T[] | undefined {
+    if (!this.root) return undefined;
+    let data: T[] = [];
+    let current = this.root;
+    function traverse(node: TreeNode<T>) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.val); //val - for convenience
+    }
+    traverse(current as TreeNode<T>);
+    return data;
+  }
 }

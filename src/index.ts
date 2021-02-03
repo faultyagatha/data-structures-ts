@@ -48,3 +48,6 @@ for (let i = 0; i < arr.length; i++) {
   bst.insert(arr[i]);
 }
 console.log('BFS: ', bst.bfs());
+console.log('DFS in order: ', bst.dfsInOrder());
+console.log('DFS pre order: ', bst.dfsPreOrder());
+console.log('DFS post order: ', bst.dfsPostOrder());
